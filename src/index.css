@@ -13,12 +13,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(
-    #ea6eea 0%,
-    #790579 20%,
-    #ea6eea 60%,
-    #790579 90%
-  );
+  background: linear-gradient(#2a00b7, #42006c);
 }
 
 code {
