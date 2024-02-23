@@ -1,20 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import "./SigninForm.css";
 import { FaUser, FaLock } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+// import { MdEmail } from "react-icons/md";
 const SigninForm = () => {
+  const [action, setAction] = useState("Sign Up");
   return (
     <div className="wrapper">
       <form>
-        <h1>Sign In</h1>
+        <h1>{action}</h1>
+        {action === "Sign In" ? (
+          <div></div>
+        ) : (
+          <div className="input-box">
+            <input
+              type="text"
+              placeholder="Name"
+              id="name"
+              name="name"
+              required
+            />
+            <FaUser className="icon" />
+          </div>
+        )}
+
         <div className="input-box">
           <input
             type="email"
-            placeholder="Username"
+            placeholder="Email"
             id="email"
             name="email"
             required
           />
-          <FaUser className="icon" />
+          <MdEmail className="icon" />
         </div>
         <div className="input-box">
           <input
@@ -26,18 +44,35 @@ const SigninForm = () => {
           />{" "}
           <FaLock className="icon" />
         </div>
-        <div className="remember-forgot">
-          <label>
-            <input type="checkbox" />
-            Remember me
-          </label>
-          <a href="#">Forgot password?</a>
-        </div>
-        <button type="submit">Sign In</button>
-        <div className="register-link">
-          <p>
-            Don't have an account? <a href="#">Register</a>
-          </p>
+        {action === "Sign Up" ? (
+          <div></div>
+        ) : (
+          <div className="remember-forgot">
+            <label>
+              <input type="checkbox" />
+              Remember me
+            </label>
+            <a>Forgot password?</a>
+          </div>
+        )}
+
+        <div className="submit-containers">
+          <div
+            className={action === "Sign In" ? "submit gray" : "submit"}
+            onClick={() => {
+              setAction("Sign Up");
+            }}
+          >
+            Sign Up
+          </div>
+          <div
+            className={action === "Sign Up" ? "submit gray" : "submit"}
+            onClick={() => {
+              setAction("Sign In");
+            }}
+          >
+            Sign In
+          </div>
         </div>
       </form>
     </div>
